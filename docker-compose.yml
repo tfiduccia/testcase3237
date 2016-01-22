@@ -1,0 +1,35 @@
+ubuntuservice:
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.service.hash: 458534044b10401548859a4cb9c2f37fff7f54bf
+  tty: true
+  image: ubuntu:14.04.3
+  stdin_open: true
+salias1:
+  labels:
+    io.rancher.service.hash: 3d7c0e0268c12ac35312ee03bf813d972617160b
+  image: rancher/dns-service
+  links:
+  - ubuntuservice:ubuntuservice
+loadbalancer1:
+  ports:
+  - 80:8080
+  labels:
+    io.rancher.service.hash: 3e637fa10bdbb2f7787a65c8b64df4239e1fe021
+  tty: true
+  image: rancher/load-balancer-service
+  links:
+  - ubuntuservice:ubuntuservice
+  stdin_open: true
+runonce:
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.container.start_once: 'true'
+    io.rancher.service.hash: 691a1940a383b3c99b4273378afea34036a2e045
+  tty: true
+  image: hello-world
+  stdin_open: true
+externalservice:
+  labels:
+    io.rancher.service.hash: 0d9849b0e367d152e887d4502da2b1d9b5864b35
+  image: rancher/external-service
