@@ -1,0 +1,28 @@
+ubuntuservice:
+  scale: 1
+  metadata:
+    io.rancher.service.hash: 6ca038ee98935b3810bbb2bcafc752f255c546e0
+salias1:
+  metadata:
+    io.rancher.service.hash: 38d1f287ab7f11d702230229d4c87f072e6085f1
+loadbalancer1:
+  scale: 1
+  load_balancer_config:
+    haproxy_config: {}
+  health_check:
+    port: 42
+    interval: 2000
+    unhealthy_threshold: 3
+    healthy_threshold: 2
+    response_timeout: 2000
+  metadata:
+    io.rancher.service.hash: ec3c92f8baec5b2b79acfb8733ad3da020533d34
+runonce:
+  scale: 1
+  metadata:
+    io.rancher.service.hash: a934eb76bc1d62b827fd395cdeaf4d4209cb38a1
+externalservice:
+  external_ips:
+  - 1.1.1.1
+  metadata:
+    io.rancher.service.hash: 9a236d389433961a90d09e447d88737cff46f9a7
